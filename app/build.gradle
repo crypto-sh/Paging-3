@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -63,6 +64,9 @@ dependencies {
      * Dagger V2
      * */
     api 'com.google.dagger:dagger:2.37'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
     kapt 'com.google.dagger:dagger-compiler:2.20'
 
     /**
@@ -83,11 +87,8 @@ dependencies {
     api 'com.squareup.okhttp3:okhttp:4.9.0'
     api 'com.squareup.retrofit2:retrofit:2.9.0'
     api 'com.squareup.retrofit2:converter-gson:2.9.0'
-    api 'com.squareup.retrofit2:converter-jackson:2.1.0'
-    api 'com.squareup.retrofit2:adapter-rxjava2:2.6.2'
+    api 'com.squareup.retrofit2:adapter-rxjava3:2.9.0'
     api 'com.squareup.okhttp3:logging-interceptor:4.9.0'
-
-
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

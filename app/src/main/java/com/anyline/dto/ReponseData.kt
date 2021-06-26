@@ -1,7 +1,6 @@
 package com.anyline.dto
 
 import androidx.annotation.Keep
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import okhttp3.ResponseBody
 import org.json.JSONObject
@@ -16,9 +15,10 @@ import javax.net.ssl.SSLHandshakeException
 @Keep
 data class ResponseData<T>(
     @Keep val tag: String,
-    @Keep val data: LiveData<T>,
+    @Keep val data: MutableLiveData<T>,
     @Keep var status: MutableLiveData<NetworkState> = MutableLiveData()
 ) {
+
     fun loaded() {
         status.postValue(NetworkState.loaded(tag))
     }
@@ -38,10 +38,7 @@ data class ResponseData<T>(
             is SocketTimeoutException,
             is UnknownHostException,
             is IOException -> NetworkState.error(ErrorType.InternetConnection, tag = tag)
-            is HttpException -> when {
-                t.code() == 401 -> NetworkState.error(ErrorType.Authorization, tag = tag)
-                else -> NetworkState.error(ErrorType.HttpException, msg = getErrorMessage(t.response()?.errorBody()), tag = tag, code = t.code())
-            }
+            is HttpException -> NetworkState.httpError(t, getErrorMessage(t.response()?.errorBody()))
             else -> {
                 NetworkState.error(ErrorType.Undefine, tag = tag)
             }

@@ -1,46 +1,24 @@
 package com.anyline.ui
 
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import androidx.lifecycle.*
-import androidx.paging.LoadState
+import androidx.lifecycle.AbstractSavedStateViewModelFactory
+import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.anyline.R
 import com.anyline.core.base.BaseActivity
 import com.anyline.databinding.ActivityMainBinding
 import com.anyline.di.DaggerAppComponent
 import com.anyline.repository.GithubRepository
-import com.anyline.ui.adapter.RvAdapterUsers
 import com.anyline.ui.viewModel.MainViewModel
 import com.anyline.ui.viewModel.MainViewModelImpl
-import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
 
 class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
-    private val adapter: RvAdapterUsers by lazy {
-        RvAdapterUsers().also {
-            lifecycleScope.launchWhenCreated {
-                adapter.loadStateFlow.collectLatest { loadStates ->
-                    dataBinding.loading = loadStates.mediator?.refresh is LoadState.Loading
-                    dataBinding.error = loadStates.mediator?.refresh is LoadState.Error
-                }
-            }
-            lifecycleScope.launchWhenCreated {
-                viewModel.getUsers().collectLatest {
-                    adapter.submitData(it)
-                }
-            }
-        }
-    }
-
     @Inject
     lateinit var repository: GithubRepository
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        dataBinding.recycler.adapter = adapter
-    }
 
     override fun inject() {
         DaggerAppComponent.builder().application(application).build().inject(this)

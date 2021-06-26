@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="user"
+            type="com.anyline.dto.User" />
+        <variable
+            name="loading"
+            type="java.lang.Boolean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_name"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="@{user.name}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_company"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="@{user.company}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_name" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_blog"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="@{user.blog}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_company" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_email"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="@{user.email}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_blog" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_bio"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="@{user.bio}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_email" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_twitter"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="@{user.twitter_username}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_bio" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_follower"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="@{@string/follower(String.valueOf(user.followers))}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_twitter" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_following"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="@{@string/following(String.valueOf(user.following))}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_follower" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_create_date"
+            style="@style/TextViewStyle"
+            android:layout_width="0dp"
+            android:layout_height="42dp"
+            android:text="@{user.created_at.toGMTString()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView_following" />
+
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{loading ? View.VISIBLE : View.GONE, default=gone}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

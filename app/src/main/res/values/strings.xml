@@ -3,6 +3,8 @@
     <string name="search_user">Search User</string>
 
 
+    <string name="following" >Following : %s</string>
+    <string name="follower" >Follower : %s</string>
 
     <string name="eofException" translatable="false">End of file Exception</string>
     <string name="ioException" translatable="false">IO exception</string>
@@ -10,6 +12,7 @@
     <string name="sslException" translatable="false">SSL Error</string>
     <string name="authorization" translatable="false">Unprocessable error</string>
     <string name="generic_error" translatable="false">Error during this process, please try later</string>
+
 
 
 </resources>

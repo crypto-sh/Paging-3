@@ -7,9 +7,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.anyline.databinding.LayoutItemUserBinding
 import com.anyline.dto.User
+import timber.log.Timber
 
 
-class RvAdapterUsers : PagingDataAdapter<User, RvAdapterUsers.Holder>(object : DiffUtil.ItemCallback<User>() {
+class RvAdapterUsers(private val onUserSelected : (User) -> Unit) : PagingDataAdapter<User, RvAdapterUsers.Holder>(object : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean = oldItem == newItem
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean =
             oldItem.id == newItem.id
@@ -19,6 +20,9 @@ class RvAdapterUsers : PagingDataAdapter<User, RvAdapterUsers.Holder>(object : D
         fun bind(user: User?) {
             if (user != null) {
                 binding.user = user
+                binding.constraint.setOnDelayClickListener {
+                    onUserSelected(user)
+                }
             }
         }
     }
