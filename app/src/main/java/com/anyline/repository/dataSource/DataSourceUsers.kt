@@ -32,7 +32,8 @@ class DataSourceUsers(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, User> {
         return try {
             val current: Int = params.key ?: 1
-            val result = apiService.users(query, pageSize, current)
+            val q = if (query.isEmpty()) "\"\"" else query
+            val result = apiService.users(q, pageSize, current)
             LoadResult.Page(
                 data = result.items,
                 prevKey = null,

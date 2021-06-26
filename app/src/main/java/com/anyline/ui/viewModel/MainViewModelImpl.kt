@@ -24,7 +24,7 @@ class MainViewModelImpl(
     }
     init {
         if (!savedStateHandle.contains(KEY_QUERY)) {
-            savedStateHandle.set(KEY_QUERY, "ali")
+            savedStateHandle.set(KEY_QUERY, "")
         }
     }
 
