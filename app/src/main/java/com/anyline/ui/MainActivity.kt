@@ -1,11 +1,15 @@
 package com.anyline.ui
 
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.lifecycle.AbstractSavedStateViewModelFactory
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.anyline.R
 import com.anyline.core.base.BaseActivity
 import com.anyline.databinding.ActivityMainBinding
@@ -22,6 +26,15 @@ class MainActivity : BaseActivity<MainViewModel, ActivityMainBinding>() {
 
     override fun inject() {
         DaggerAppComponent.builder().application(application).build().inject(this)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setSupportActionBar(dataBinding.toolbar)
+        val navHost = supportFragmentManager.findFragmentById(R.id.navHost) as NavHostFragment
+        val navController = navHost.navController
+        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        dataBinding.toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
     override fun getResourceLayoutId(): Int = R.layout.activity_main

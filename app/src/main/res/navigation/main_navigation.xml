@@ -8,8 +8,7 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.anyline.ui.fragment.MainFragment"
-        tools:layout="@layout/activity_main"
-        android:label="MainFragment" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_userDetailsFragment"
             app:destination="@id/userDetailsFragment" />
@@ -18,7 +17,6 @@
     <fragment
         android:id="@+id/userDetailsFragment"
         android:name="com.anyline.ui.fragment.UserDetailsFragment"
-        android:label="fragment_user_details"
         tools:layout="@layout/fragment_user_details" >
         <argument
             android:name="userKey"

@@ -22,7 +22,7 @@
             style="@style/TextViewStyle"
             android:layout_width="0dp"
             android:layout_height="42dp"
-            android:text="@{user.name}"
+            android:text="@{@string/name(user.name)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -32,7 +32,7 @@
             style="@style/TextViewStyle"
             android:layout_width="0dp"
             android:layout_height="42dp"
-            android:text="@{user.company}"
+            android:text="@{@string/company(user.company)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_name" />
@@ -42,7 +42,7 @@
             style="@style/TextViewStyle"
             android:layout_width="0dp"
             android:layout_height="42dp"
-            android:text="@{user.blog}"
+            android:text="@{@string/blog(user.blog)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_company" />
@@ -52,7 +52,7 @@
             style="@style/TextViewStyle"
             android:layout_width="0dp"
             android:layout_height="42dp"
-            android:text="@{user.email}"
+            android:text="@{@string/email(user.email)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_blog" />
@@ -62,7 +62,7 @@
             style="@style/TextViewStyle"
             android:layout_width="0dp"
             android:layout_height="42dp"
-            android:text="@{user.bio}"
+            android:text="@{@string/bio(user.bio)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_email" />
@@ -72,7 +72,7 @@
             style="@style/TextViewStyle"
             android:layout_width="0dp"
             android:layout_height="42dp"
-            android:text="@{user.twitter_username}"
+            android:text="@{@string/twitter(user.twitter_username)}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textView_bio" />

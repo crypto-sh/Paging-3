@@ -3,6 +3,13 @@
     <string name="search_user">Search User</string>
 
 
+    <string name="name" >Name : %s</string>
+    <string name="company" >Company : %s</string>
+    <string name="blog" >Blog : %s</string>
+    <string name="email" >Email : %s</string>
+    <string name="bio" >Bio : %s</string>
+    <string name="twitter" >Twitter : %s</string>
+
     <string name="following" >Following : %s</string>
     <string name="follower" >Follower : %s</string>
 
